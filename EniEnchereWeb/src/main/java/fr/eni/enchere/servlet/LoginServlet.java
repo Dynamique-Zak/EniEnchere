@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.enchere.bll.BLLManager;
+import fr.eni.enchere.dao.DALException;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -19,7 +22,6 @@ public class LoginServlet extends HttpServlet {
      */
     public LoginServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -34,8 +36,31 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		
+		String email=request.getParameter("email");
+		String password=request.getParameter("password");
+		boolean successLogin = false;
+		try 
+		{
+			successLogin = BLLManager.getInstance().getUtilisaterManager().login(email, password);
+			
+			String message = "";
+		}
+		catch (DALException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		if (successLogin) {
+			response.sendRedirect("LoginServlet");
+		}
+		else {
+			// sino nerreur mot de passe
+			response.sendRedirect("LoginServlet");
+		}
+		//getServletContext().getRequestDispatcher("/index.html").forward(request, response);
+	
 	}
 
 }
