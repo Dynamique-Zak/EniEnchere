@@ -14,8 +14,28 @@ public class UtilisateurBLL {
 	 * @return
 	 * @throws DALException
 	 */
-	public boolean login(String username, String password) throws DALException{
-		return DAOFactory.getInstance().getUtilisateurDAO().login(username, password);
+	public EniResponse login(String username, String password){
+		Utilisateur user = null;
+		try {
+			user = DAOFactory.getInstance().getUtilisateurDAO().login(username, password);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// 2 : Reponse metier
+		// -- Reponse par défaut
+		EniResponse response = new EniResponse(EniConstantes.CODE_SUCCESS, "Login avec succès");
+		
+		// si false
+		if (user == null) {
+			response.setResponse(EniConstantes.CODE_ERROR_TECH, "Impossible de se connecter");
+		}
+		
+		// Store the user in the response
+		response.setDataObject(user);
+		
+		return response;
 	}
 	
 	/**
@@ -43,6 +63,30 @@ public class UtilisateurBLL {
 		if (!success) {
 			response.setResponse(EniConstantes.CODE_ERROR_TECH, "Impossible d'insérer un utilisateur");
 		}
+		
+		return response;
+	}
+	
+	public EniResponse select(int id){
+		Utilisateur user = null;
+		try {
+			user = DAOFactory.getInstance().getUtilisateurDAO().select(id);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// 2 : Reponse metier
+		// -- Reponse par défaut
+		EniResponse response = new EniResponse(EniConstantes.CODE_SUCCESS, "Login avec succès");
+		
+		// si false
+		if (user == null) {
+			response.setResponse(EniConstantes.CODE_ERROR_TECH, "Impossible de se connecter");
+		}
+		
+		// Store the user in the response
+		response.setDataObject(user);
 		
 		return response;
 	}

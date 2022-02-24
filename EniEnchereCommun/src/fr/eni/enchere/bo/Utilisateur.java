@@ -15,6 +15,10 @@ public class Utilisateur {
 	private int credit;
 	private int administrateur;
 
+	public Utilisateur(int noUtilisateur) {
+		this.noUtilisateur = noUtilisateur;
+	}
+	
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse, int credit, int administrateur) {
 		super();
@@ -31,6 +35,8 @@ public class Utilisateur {
 		this.credit = credit;
 		this.administrateur = administrateur;
 	}
+	
+	
 	/**
 	 * @return the noUtilisateur
 	 */

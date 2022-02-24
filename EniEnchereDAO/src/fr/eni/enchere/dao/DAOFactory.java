@@ -10,6 +10,8 @@ public class DAOFactory {
 	
 	private String implMode = "jdbc"; // or jdbc | mocl
 	private UtilisateurDAO utilisateurDAO;
+	private EnchereDAO enchereDAO;
+	private ArticleDAO articleDAO;
 	
 	/**
 	 * Get current instance
@@ -56,5 +58,49 @@ public class DAOFactory {
 			}
 		}
 		return utilisateurDAO; 
+	}
+	
+	/**
+	 * Get enchere DAO
+	 * @return
+	 */
+	public ArticleDAO getArticleDAO()  {
+		if (articleDAO == null) {
+			try {
+				articleDAO = (ArticleDAO) Class.forName(getPackagePrefix("ArticleDAO")).newInstance();
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return articleDAO; 
+	}
+	
+	/**
+	 * Get enchere DAO
+	 * @return
+	 */
+	public EnchereDAO getEnchereDAO()  {
+		if (enchereDAO == null) {
+			try {
+				enchereDAO = (EnchereDAO) Class.forName(getPackagePrefix("EnchereDAO")).newInstance();
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return enchereDAO; 
 	}
 }

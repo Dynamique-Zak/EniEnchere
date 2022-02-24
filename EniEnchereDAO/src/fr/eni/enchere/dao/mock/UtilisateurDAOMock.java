@@ -10,14 +10,20 @@ import fr.eni.enchere.dao.UtilisateurDAO;
 public class UtilisateurDAOMock implements UtilisateurDAO{
 	
 	@Override
-	public boolean login(String username, String password) throws DALException {
-		return (username.equals("test@mail.com") && password.equals("password"));
+	public Utilisateur login(String username, String password) throws DALException {
+		return null;
 	}
 
 	@Override
 	public boolean registreUser(Utilisateur user) throws DALException {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public Utilisateur select(int id) throws DALException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

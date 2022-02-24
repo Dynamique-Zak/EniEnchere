@@ -4,6 +4,7 @@ public class EniResponse {
 
 	private int codeResponse;
 	private String messageResponse;
+	private Object object;
 	
 	/**
 	 * @param codeResponse
@@ -45,6 +46,20 @@ public class EniResponse {
 	 */
 	public void setMessageResponse(String messageResponse) {
 		this.messageResponse = messageResponse;
+	}
+
+	/**
+	 * @return the object
+	 */
+	public Object getDataObject() {
+		return object;
+	}
+
+	/**
+	 * @param object the object to set
+	 */
+	public void setDataObject(Object object) {
+		this.object = object;
 	}
 	
 	
