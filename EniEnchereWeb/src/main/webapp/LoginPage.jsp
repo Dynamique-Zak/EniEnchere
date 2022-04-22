@@ -21,15 +21,15 @@
 
 <body>
   <div class="eech-page-wrapper">
-        <form method="post" action="LoginServlet">
+        <form method="post" action="login">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="ngo@ator.com">
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="sberecloth0@addtoany.com">
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" name="password" value="Pa$$w0rd!">
+              <input type="password" class="form-control" id="exampleInputPassword1" name="password" value="W84iWUbZInr">
             </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">

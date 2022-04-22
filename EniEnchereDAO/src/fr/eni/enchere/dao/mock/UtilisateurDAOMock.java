@@ -5,9 +5,9 @@ import java.util.List;
 
 import fr.eni.enchere.bo.Utilisateur;
 import fr.eni.enchere.dao.DALException;
-import fr.eni.enchere.dao.UtilisateurDAO;
+import fr.eni.enchere.dao.IUtilisateurDAO;
 
-public class UtilisateurDAOMock implements UtilisateurDAO{
+public class UtilisateurDAOMock implements IUtilisateurDAO{
 	
 	@Override
 	public Utilisateur login(String username, String password) throws DALException {

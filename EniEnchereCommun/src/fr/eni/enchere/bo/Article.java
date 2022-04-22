@@ -3,6 +3,8 @@ package fr.eni.enchere.bo;
 import java.util.Date;
 import java.util.Objects;
 
+import fr.eni.enchere.bo.utils.EniCommunUtils;
+
 public class Article {
 	private int noArticle;
 	private String nomArticle;
@@ -12,9 +14,12 @@ public class Article {
 	private int miseAPrix;
 	private int prixVente;
 	
+	// Membre d'associations
 	private Category category;
-	private Utilisateur utilisateur;
-	
+	private Utilisateur vendeur;
+	private Enchere topEnchere;
+	private Retrait retrait;
+
 	public Article() {
 		// TODO Auto-generated constructor stub
 	}
@@ -94,6 +99,14 @@ public class Article {
 	public Date getDateFinEncheres() {
 		return dateFinEncheres;
 	}
+	
+	/**
+	 * @return the dateFinEncheres
+	 */
+	public String getDateFinEncheresString() {
+		return EniCommunUtils.displayDateToFrench(dateDebutEncheres);
+	}
+	
 	/**
 	 * @param dateFinEncheres the dateFinEncheres to set
 	 */
@@ -142,15 +155,15 @@ public class Article {
 	/**
 	 * @return the utilisateur
 	 */
-	public Utilisateur getUtilisateur() {
-		return utilisateur;
+	public Utilisateur getVendeur() {
+		return vendeur;
 	}
 
 	/**
 	 * @param utilisateur the utilisateur to set
 	 */
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+	public void setVendeur(Utilisateur utilisateur) {
+		this.vendeur = utilisateur;
 	}
 
 	@Override
@@ -174,8 +187,30 @@ public class Article {
 	public String toString() {
 		return "Article [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
 				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", miseAPrix="
-				+ miseAPrix + ", prixVente=" + prixVente + ", category=" + category + ", utilisateur=" + utilisateur
+				+ miseAPrix + ", prixVente=" + prixVente + ", category=" + category + ", utilisateur=" + vendeur
 				+ "]";
+	}
+
+	public Enchere getTopEnchere() {
+		return topEnchere;
+	}
+
+	public void setTopEnchere(Enchere topEnchere) {
+		this.topEnchere = topEnchere;
+	}
+	
+	/**
+	 * @return the retrait
+	 */
+	public Retrait getRetrait() {
+		return retrait;
+	}
+
+	/**
+	 * @param retrait the retrait to set
+	 */
+	public void setRetrait(Retrait retrait) {
+		this.retrait = retrait;
 	}
 	
 }

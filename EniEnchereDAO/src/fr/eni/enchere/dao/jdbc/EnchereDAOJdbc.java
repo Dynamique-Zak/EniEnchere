@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,11 +16,11 @@ import fr.eni.enchere.bo.Enchere;
 import fr.eni.enchere.bo.Utilisateur;
 import fr.eni.enchere.bo.utils.EniCommunUtils;
 import fr.eni.enchere.dao.DALException;
-import fr.eni.enchere.dao.EnchereDAO;
+import fr.eni.enchere.dao.IEnchereDAO;
 import fr.eni.enchere.dao.utils.EniDAOFilter;
 import fr.eni.enchere.dao.utils.EniDAOMapping;
 
-public class EnchereDAOJdbc implements EnchereDAO {
+public class EnchereDAOJdbc implements IEnchereDAO {
 
 	private static final String sqlSelectBestEnchere = "SELECT TOP 1 *"
 			+ " FROM ENCHERES WHERE no_article = ? ORDER BY montant_enchere DESC";

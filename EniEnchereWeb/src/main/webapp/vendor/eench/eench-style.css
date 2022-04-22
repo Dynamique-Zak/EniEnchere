@@ -30,3 +30,19 @@ div.navbar-brand {
 .navbar-nav .nav-item:hover {
     background-color: rgba(180, 190, 203, 0.4);
 }
+
+.eench-pagination-wrapper{
+  padding: 1rem 0;
+}
+
+.eench-card-article {
+  margin-top: 1rem;
+}
+
+.eench-encherir-input{
+  width: 100px;
+}
+
+.eench-h-bold{
+  font-weight: bold;
+}

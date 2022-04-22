@@ -13,11 +13,12 @@ import fr.eni.enchere.bll.BLLManager;
 import fr.eni.enchere.bll.EniResponse;
 import fr.eni.enchere.bll.utils.EniConstantes;
 import fr.eni.enchere.bo.Utilisateur;
+import fr.eni.enchere.servlet.utils.EniWebUtils;
 
 /**
  * Servlet implementation class RegisterServlet
  */
-@WebServlet("/RegisterServlet")
+@WebServlet("/signin")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -49,12 +50,23 @@ public class RegisterServlet extends HttpServlet {
     	// Retourne la valeur de success
     	return success;
     }
+    
+    public void setupUserPojoRequest(HttpServletRequest request) {
+    	// Get logged user (empty)
+		Utilisateur user = new Utilisateur(-1);
+		
+		// Pojo
+		request.setAttribute("user", user);
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// User pojo request
+		this.setupUserPojoRequest(request);
+				
+		// Register Page
 		getServletContext().getRequestDispatcher("/RegisterPage.jsp").forward(request, response);
 	}
 

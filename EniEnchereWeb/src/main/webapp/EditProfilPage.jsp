@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Créer un compte</title>
+        <title>Mon Profil</title>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -30,14 +30,15 @@
         <div class="eech-page-wrapper">
             <h2 class="eench-h-title">ENI Enchères</h2>
 
-            <h3 class="text-center eench-h-subtitle">Créer un compte</h3>
-            <form method="post" action="signin">
+            <h3 class="text-center eench-h-subtitle">Mon Profil</h3>
+            <form method="post" action="edit-profil">
             	<!-- Form User -->
     			<%@include file='WEB-INF/include/form-user.jsp'%>
                 <!-- Buttons  -->
                 <div class="d-grid gap-2 d-flex">
-                    <input type="submit" class="btn btn-primary col-6" value="Créer"></button>
-                    <button type="button" class="btn btn-primary col-6">Annuler</button>
+                    <input type="submit" class="btn btn-primary col-4" value="Enregistrer" />
+                    <a href="delete-profil" class="btn btn-primary col-4">Supprimer mon Compte</a>
+                    <a href="my-profil" class="btn btn-primary col-4">Retour</a>
                 </div>
 
             </form>

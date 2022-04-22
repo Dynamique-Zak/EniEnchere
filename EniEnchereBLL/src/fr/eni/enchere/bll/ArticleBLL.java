@@ -1,18 +1,30 @@
 package fr.eni.enchere.bll;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.bo.Category;
 import fr.eni.enchere.bo.Enchere;
 import fr.eni.enchere.bo.Utilisateur;
+import fr.eni.enchere.bo.utils.ArticlePaginateResult;
 import fr.eni.enchere.dao.DALException;
 import fr.eni.enchere.dao.DAOFactory;
 
 public class ArticleBLL {
-
+	
+	public ArticlePaginateResult getAllArticle(int pageIndex){
+		try {
+			return DAOFactory.getInstance().getArticleDAO().selectAllPaginate(pageIndex, 20);
+		} catch (DALException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 	
 	public List<Article> getAllArticle(){
 		try {
@@ -24,6 +36,17 @@ public class ArticleBLL {
 		return null;
 	}
 	
+	public List<Category> getAllCategory(){
+		List<Category> categoryList = new ArrayList<Category>();
+		
+		try {
+			categoryList = DAOFactory.getInstance().getCategoryDAO().selectAll();
+		} catch (DALException e) {
+			e.printStackTrace();
+		}
+		
+		return categoryList;
+	}
 	public Article getArticle(int id) {
 		try {
 			return DAOFactory.getInstance().getArticleDAO().select(id);
@@ -97,7 +120,7 @@ public class ArticleBLL {
 	public List<Enchere> getAllByFilter(Utilisateur user, HashMap<Integer, Boolean> filterSelected)
 	{
 		List<Enchere> listEnchere = null;
-		
+
 		try {
 			listEnchere = DAOFactory.getInstance().getEnchereDAO().selectAllByFilter(user, filterSelected);
 		} catch (DALException e) {

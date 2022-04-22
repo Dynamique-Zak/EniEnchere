@@ -14,10 +14,10 @@ import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Category;
 import fr.eni.enchere.bo.Utilisateur;
 import fr.eni.enchere.dao.DALException;
-import fr.eni.enchere.dao.UtilisateurDAO;
+import fr.eni.enchere.dao.IUtilisateurDAO;
 import fr.eni.enchere.dao.utils.EniDAOMapping;
 
-public class UtilisateurDAOJdbc implements UtilisateurDAO{
+public class UtilisateurDAOJdbc implements IUtilisateurDAO{
 
 	private static final String sqlSelectByLogin = "SELECT *" +
 			" FROM UTILISATEURS WHERE email = ? AND mot_de_passe = ?";

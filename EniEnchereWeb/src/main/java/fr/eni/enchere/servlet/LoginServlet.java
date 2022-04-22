@@ -10,19 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.omg.PortableInterceptor.SUCCESSFUL;
-
 import fr.eni.enchere.bll.BLLManager;
 import fr.eni.enchere.bll.EniResponse;
 import fr.eni.enchere.bll.utils.EniConstantes;
 import fr.eni.enchere.bo.Utilisateur;
-import fr.eni.enchere.dao.DALException;
-import fr.eni.enchere.servlet.utils.EniWebUtils;
 
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -40,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 		// Si je suis connecté
 		if (request.getSession().getAttribute("logged") != null && (boolean) request.getSession().getAttribute("logged")) {
 		   // Redirect
-		   response.sendRedirect("HomeServlet");
+		   response.sendRedirect("home");
 		   
 		   // Flash message
 		   request.getSession().setAttribute("successMessage", "Vous êtes déjà connecté !");
@@ -87,7 +83,7 @@ public class LoginServlet extends HttpServlet {
 		   session.setAttribute("successMessage", "Vous êtes connecté(e) !");
 		   
 		   // Redirect
-		   response.sendRedirect("HomeServlet");
+		   response.sendRedirect("home");
 		}
 		else {
 			// sino nerreur mot de passe

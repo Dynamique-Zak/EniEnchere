@@ -4,7 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.bo.Category;
 import fr.eni.enchere.bo.Enchere;
+import fr.eni.enchere.bo.Retrait;
 import fr.eni.enchere.bo.Utilisateur;
 import fr.eni.enchere.bo.utils.EniCommunUtils;
 
@@ -37,6 +39,27 @@ public class EniDAOMapping {
 		}
 		
 		return user;
+	}
+	
+	/**
+	 * Mapping Enchere
+	 * @param rs
+	 * @return
+	 */
+	public static Retrait mappingRetrait(ResultSet rs) {
+		Retrait retrait = null;
+		try {
+			retrait = new Retrait(rs.getInt("no_artilce"),
+					rs.getString("rue"),
+					rs.getString("code_postal"),
+					rs.getString("ville"));
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return retrait;
 	}
 	
 	/**
@@ -76,5 +99,22 @@ public class EniDAOMapping {
 			e.printStackTrace();
 		}
 		return enchere;
+	}
+	
+	/**
+	 * Mapping Category
+	 * @param rs
+	 * @return
+	 */
+	public static Category mappingCategory(ResultSet rs) {
+		Category category = null;
+		try {
+			
+			category = new Category(rs.getInt("no_categorie"), rs.getString("libelle"));
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return category;
 	}
 }

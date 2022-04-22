@@ -1,17 +1,14 @@
 package fr.eni.enchere.dao;
 
-import fr.eni.enchere.bo.Utilisateur;
-import fr.eni.enchere.dao.jdbc.UtilisateurDAOJdbc;
-import fr.eni.enchere.dao.mock.UtilisateurDAOMock;
-
 public class DAOFactory {
 	
 	private static DAOFactory instance;
 	
 	private String implMode = "jdbc"; // or jdbc | mocl
-	private UtilisateurDAO utilisateurDAO;
-	private EnchereDAO enchereDAO;
-	private ArticleDAO articleDAO;
+	private IUtilisateurDAO utilisateurDAO;
+	private IEnchereDAO enchereDAO;
+	private IArticleDAO articleDAO;
+	private ICategoryDAO categoryDAO;
 	
 	/**
 	 * Get current instance
@@ -42,10 +39,10 @@ public class DAOFactory {
 	 * Get use DAO
 	 * @return
 	 */
-	public UtilisateurDAO getUtilisateurDAO()  {
+	public IUtilisateurDAO getUtilisateurDAO()  {
 		if (utilisateurDAO == null) {
 			try {
-				utilisateurDAO = (UtilisateurDAO) Class.forName(getPackagePrefix("UtilisateurDAO")).newInstance();
+				utilisateurDAO = (IUtilisateurDAO) Class.forName(getPackagePrefix("UtilisateurDAO")).newInstance();
 			} catch (InstantiationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -64,10 +61,10 @@ public class DAOFactory {
 	 * Get enchere DAO
 	 * @return
 	 */
-	public ArticleDAO getArticleDAO()  {
+	public IArticleDAO getArticleDAO()  {
 		if (articleDAO == null) {
 			try {
-				articleDAO = (ArticleDAO) Class.forName(getPackagePrefix("ArticleDAO")).newInstance();
+				articleDAO = (IArticleDAO) Class.forName(getPackagePrefix("ArticleDAO")).newInstance();
 			} catch (InstantiationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -83,13 +80,35 @@ public class DAOFactory {
 	}
 	
 	/**
+	 * Get category DAO
+	 * @return
+	 */
+	public ICategoryDAO getCategoryDAO()  {
+		if (categoryDAO == null) {
+			try {
+				categoryDAO = (ICategoryDAO) Class.forName(getPackagePrefix("CategoryDAO")).newInstance();
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return categoryDAO; 
+	}
+	
+	/**
 	 * Get enchere DAO
 	 * @return
 	 */
-	public EnchereDAO getEnchereDAO()  {
+	public IEnchereDAO getEnchereDAO()  {
 		if (enchereDAO == null) {
 			try {
-				enchereDAO = (EnchereDAO) Class.forName(getPackagePrefix("EnchereDAO")).newInstance();
+				enchereDAO = (IEnchereDAO) Class.forName(getPackagePrefix("EnchereDAO")).newInstance();
 			} catch (InstantiationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -7,7 +7,7 @@ import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Enchere;
 import fr.eni.enchere.bo.Utilisateur;
 
-public interface  EnchereDAO {
+public interface  IEnchereDAO {
 
 	public List<Enchere> selectAllByFilter(Utilisateur user, HashMap<Integer, Boolean> filterSelected) throws DALException;
 	

@@ -1,23 +1,28 @@
 package fr.eni.enchere.servlet;
 
 import java.io.IOException;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.enchere.bll.BLLManager;
+import fr.eni.enchere.bo.Article;
+
 /**
- * Servlet implementation class LogoutServlet
+ * Servlet implementation class MyProfilServlet
  */
-@WebServlet("/logout")
-public class LogoutServlet extends HttpServlet {
+@WebServlet("/sell-article")
+public class SellArticleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogoutServlet() {
+    public SellArticleServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,13 +31,17 @@ public class LogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		   request.getSession().setAttribute("no_utilisateur", null);
-		   request.getSession().setAttribute("logged", false);
-		   
-		   // Flash message
-		   request.getSession().setAttribute("successMessage", "Vous êtes déconnecté(e) !");
-		   
-		   response.sendRedirect("HomeServlet");
+		// Empty article
+		Article article = new Article();
+		article.setDateDebutEncheres(new Date());
+		article.setDateFinEncheres(new Date());
+	
+		// Pojo
+		request.setAttribute("article", article);
+		request.setAttribute("categoryList", 
+				BLLManager.getInstance().getArticleManager().getAllCategory());
+		// Register Page
+		getServletContext().getRequestDispatcher("/WEB-INF/SellArticle.jsp").forward(request, response);
 	}
 
 	/**

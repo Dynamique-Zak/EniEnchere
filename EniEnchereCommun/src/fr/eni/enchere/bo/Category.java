@@ -5,7 +5,16 @@ public class Category {
 	private int no_category;
 	private String libelle;
 
-
+	/**
+	 * @param no_category
+	 * @param libelle
+	 */
+	public Category(int no_category, String libelle) {
+		super();
+		this.no_category = no_category;
+		this.libelle = libelle;
+	}
+	
 	/**
 	 * @return the no_category
 	 */

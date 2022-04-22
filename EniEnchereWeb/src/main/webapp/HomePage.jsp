@@ -24,7 +24,6 @@
   <!-- Custom styles for this template -->
   <link href="vendor/starter-template.css" rel="stylesheet">
   
-  </style>
 </head>
 
 <body>
@@ -40,7 +39,7 @@
     <!-- Main -->
     <main>
       <h1>Accueil</h1>
-      <p class="fs-5 col-md-8">Bienvenue sur le site !
+      	<p class="fs-5 col-md-8">Bienvenue sur le site !
       </p>
 
       <hr class="col-3 col-md-2 mb-5">
@@ -49,7 +48,7 @@
       <h3>Filtres</h3>
       <!-- Filtre -->
       <div>
-        <form action="HomeServlet" method="post">
+        <form action="" method="post">
           <ul>
             <!--List Step-3 -->
             <li>
@@ -74,9 +73,23 @@
       </div>
 
       <div>
+        <!-- Pagination -->
+        <div class="eench-pagination-wrapper">
+          <nav aria-label="Page">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+              <c:forEach var="i" begin="0" end="${ nbPage }" step="1">
+                <li class="${i == pageIndex ? 'page-item active' : 'page-item'}">
+                  <a class="page-link" href="?page=${ i }">${ i + 1 }</a>
+                </li>
+              </c:forEach>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
+        </div>
         <!-- For each article -->
         <c:forEach items="${articleList}" var="article">
-          <div class="card">
+          <div class="eench-card-article card">
             <div class="card-body">
               <h5 class="card-title">
               	<a href="DetailArticleServlet?id=${ article.getNoArticle() }">${article.getNomArticle()}</a>
